@@ -1362,6 +1362,222 @@
     padding: 0; margin: -1px; overflow: hidden;
     clip: rect(0, 0, 0, 0); border: 0;
   }
+
+  /* SET-BY-SET LOGGING */
+  .log-mode-toggle {
+    display: flex;
+    gap: 2px;
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 3px;
+    margin-bottom: 16px;
+  }
+
+  .log-mode-toggle button {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-2);
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 8px 6px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-weight: 500;
+  }
+
+  .log-mode-toggle button.active {
+    background: linear-gradient(180deg, var(--gold-bright), var(--gold-deep));
+    color: var(--bg);
+    font-weight: 700;
+  }
+
+  .sets-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 12px;
+    max-height: 280px;
+    overflow-y: auto;
+    padding-right: 2px;
+  }
+
+  .set-row {
+    display: grid;
+    grid-template-columns: 32px 1fr 1fr 32px;
+    gap: 8px;
+    align-items: center;
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 8px 10px;
+  }
+
+  .set-row.peak {
+    border-color: var(--gold-deep);
+    background: linear-gradient(135deg, rgba(212,175,55,0.08) 0%, var(--bg-2) 100%);
+  }
+
+  .set-num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--gold);
+    text-align: center;
+    line-height: 1;
+  }
+
+  .set-input-wrap {
+    position: relative;
+  }
+
+  .set-input-wrap input {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    color: var(--text);
+    padding: 8px 28px 8px 10px;
+    border-radius: 4px;
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .set-input-wrap input:focus {
+    outline: none;
+    border-color: var(--gold);
+  }
+
+  .set-unit {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--text-3);
+    letter-spacing: 0.1em;
+    pointer-events: none;
+  }
+
+  .set-del {
+    width: 28px; height: 28px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-3);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+
+  .set-del:hover {
+    border-color: var(--danger);
+    color: var(--danger);
+  }
+
+  .set-del svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+  .set-add-btn {
+    width: 100%;
+    padding: 10px;
+    border: 1px dashed var(--line-2);
+    background: transparent;
+    color: var(--text-2);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    margin-bottom: 8px;
+  }
+
+  .set-add-btn:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: var(--gold-dim);
+  }
+
+  .ex-stat-detail {
+    color: var(--gold-bright);
+    font-weight: 700;
+    font-size: 10px;
+  }
+
+  /* DETAIL POPOVER (chart tooltip alternative) */
+  .session-detail {
+    margin: 0 16px 16px;
+    background: var(--surface);
+    border: 1px solid var(--gold-deep);
+    border-radius: 4px;
+    padding: 16px 18px;
+    animation: timerEnter 0.3s ease;
+  }
+
+  .session-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .session-detail-week {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--gold);
+  }
+
+  .session-detail-close {
+    background: transparent;
+    border: none;
+    color: var(--text-3);
+    cursor: pointer;
+    padding: 4px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .session-detail-close:hover { color: var(--gold); }
+
+  .session-set-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    font-family: var(--mono);
+    font-size: 12px;
+  }
+
+  .session-set-num {
+    color: var(--text-3);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .session-set-vals {
+    color: var(--text);
+    letter-spacing: 0.05em;
+  }
+
+  .session-set-vals strong {
+    color: var(--gold);
+    font-weight: 700;
+    margin-right: 4px;
+  }
 </style>
 </head>
 <body>
@@ -1507,6 +1723,64 @@
     return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   }
 
+  // ---- LOG HELPERS ----
+  // A log can be: { weight, reps } (simple) or { sets: [{weight, reps}, ...] } (detailed)
+  // Returns array of {weight, reps} for any log, expanded to ex.sets length when simple
+  function expandLogToSets(log, ex) {
+    if (!log) return null;
+    if (log.sets && Array.isArray(log.sets) && log.sets.length > 0) {
+      return log.sets.map(s => ({
+        weight: s.weight != null ? s.weight : ex.weight,
+        reps: s.reps != null ? s.reps : (parseInt(String(ex.reps).split('-')[0]) || 0)
+      }));
+    }
+    const w = log.weight != null ? log.weight : ex.weight;
+    const r = log.reps != null ? log.reps : (parseInt(String(ex.reps).split('-')[0]) || 0);
+    const arr = [];
+    for (let i = 0; i < ex.sets; i++) arr.push({ weight: w, reps: r });
+    return arr;
+  }
+
+  // Get representative weight (max of sets) for chart point
+  function getLogPeakWeight(log, ex) {
+    const sets = expandLogToSets(log, ex);
+    if (!sets || sets.length === 0) return ex.weight;
+    return sets.reduce((max, s) => s.weight > max ? s.weight : max, 0);
+  }
+
+  // Get total volume of a log (sum of weight * reps for each set)
+  function getLogVolume(log, ex) {
+    const sets = expandLogToSets(log, ex);
+    if (!sets || sets.length === 0) return 0;
+    return sets.reduce((sum, s) => sum + (s.weight * s.reps), 0);
+  }
+
+  // Detect if log has heterogeneous sets (different weights/reps)
+  function isLogDetailed(log) {
+    if (!log || !log.sets || !Array.isArray(log.sets) || log.sets.length < 2) return false;
+    const first = log.sets[0];
+    return log.sets.some(s => s.weight !== first.weight || s.reps !== first.reps);
+  }
+
+  // Build a summary string like "30kg ×3, 35kg ×1" or "30kg" if uniform
+  function formatLogSummary(log, ex) {
+    const sets = expandLogToSets(log, ex);
+    if (!sets || sets.length === 0) return ex.weight + ' kg';
+    const groups = [];
+    sets.forEach(s => {
+      const last = groups[groups.length - 1];
+      if (last && last.weight === s.weight && last.reps === s.reps) {
+        last.count++;
+      } else {
+        groups.push({ weight: s.weight, reps: s.reps, count: 1 });
+      }
+    });
+    if (groups.length === 1) {
+      return groups[0].weight + ' kg';
+    }
+    return groups.map(g => g.weight + ' kg ×' + g.count).join(' · ');
+  }
+
   let state = loadState();
   let timerInterval = null;
   let timerState = null;
@@ -1528,13 +1802,13 @@
       const session = state.sessions[k];
       if (!session.log || !session.log[exId]) return;
       const log = session.log[exId];
-      const w = log.weight != null ? log.weight : ex.weight;
-      let value = w;
+      let value;
       if (mode === 'volume') {
-        const repsNum = parseInt(String(ex.reps).split('-')[0]) || 0;
-        value = w * ex.sets * repsNum;
+        value = getLogVolume(log, ex);
+      } else {
+        value = getLogPeakWeight(log, ex);
       }
-      points.push({ week, value: Math.round(value * 10) / 10 });
+      points.push({ week, value: Math.round(value * 10) / 10, log: log });
     });
     points.sort((a, b) => a.week - b.week);
     return points;
@@ -1550,10 +1824,14 @@
         let vol = 0;
         w.exercises.forEach(ex => {
           if (!session.completed || !session.completed[ex.id]) return;
-          const log = (session.log && session.log[ex.id]) || {};
-          const wKg = log.weight != null ? log.weight : ex.weight;
-          const repsNum = parseInt(String(ex.reps).split('-')[0]) || 0;
-          vol += wKg * ex.sets * repsNum;
+          const log = (session.log && session.log[ex.id]);
+          if (log) {
+            vol += getLogVolume(log, ex);
+          } else {
+            // No log but completed: use defaults
+            const repsNum = parseInt(String(ex.reps).split('-')[0]) || 0;
+            vol += ex.weight * ex.sets * repsNum;
+          }
         });
         if (!result[w.name]) result[w.name] = {};
         result[w.name][week] = (result[w.name][week] || 0) + vol;
@@ -1670,16 +1948,26 @@
     html += '<div class="ex-list stagger">';
     w.exercises.forEach(ex => {
       const done = !!session.completed[ex.id];
-      const log = session.log[ex.id] || {};
-      const wKg = log.weight != null ? log.weight : ex.weight;
+      const log = session.log[ex.id] || null;
+      const detailed = isLogDetailed(log);
+      const summary = log ? formatLogSummary(log, ex) : (ex.weight + ' kg');
+      const repsNum = parseInt(String(ex.reps).split('-')[0]) || 0;
+      const setsCount = (log && log.sets && Array.isArray(log.sets)) ? log.sets.length : ex.sets;
+      const repsLabel = (log && log.sets && Array.isArray(log.sets))
+        ? (detailed ? '' : (setsCount + '×' + (log.sets[0].reps || ex.reps)))
+        : (ex.sets + '×' + ex.reps);
       html += '<div class="ex-card' + (done ? ' done' : '') + '"><div class="ex-main">';
       html += '<button class="ex-check' + (done ? ' checked' : '') + '" data-action="toggle-done" data-ex="' + ex.id + '" aria-label="Segna come fatto"></button>';
       html += '<div class="ex-content">';
       html += '<div class="ex-name">' + escapeHtml(ex.name) + '</div>';
       html += '<div class="ex-stats">';
-      html += '<span class="ex-stat-w">' + wKg + ' KG</span>';
-      html += '<span class="ex-stat-divider"></span>';
-      html += '<span>' + ex.sets + '×' + ex.reps + '</span>';
+      if (detailed) {
+        html += '<span class="ex-stat-detail">' + escapeHtml(summary) + '</span>';
+      } else {
+        html += '<span class="ex-stat-w">' + summary.replace(' kg', ' KG') + '</span>';
+        html += '<span class="ex-stat-divider"></span>';
+        html += '<span>' + repsLabel + '</span>';
+      }
       html += '<span class="ex-stat-divider"></span>';
       html += '<span>' + formatRest(ex.rest) + '</span>';
       html += '</div></div>';
@@ -1732,7 +2020,33 @@
       html += '<div class="stat"><div class="stat-label">Attuale</div><div class="stat-value gold">' + last + '<span class="stat-unit">' + unit + '</span></div></div>';
       html += '<div class="stat"><div class="stat-label">Variazione</div><div class="stat-value ' + cls + '">' + (delta > 0 ? '+' : '') + delta + '<span class="stat-unit">' + unit + '</span></div></div>';
       html += '</div>';
-      html += '<div class="chart-card"><div class="chart-title">Andamento per settimana</div><div class="chart-wrap"><canvas id="progress-chart" role="img" aria-label="Grafico progressi esercizio"></canvas></div></div>';
+      html += '<div class="chart-card"><div class="chart-title">Andamento per settimana · tocca un punto per il dettaglio</div><div class="chart-wrap"><canvas id="progress-chart" role="img" aria-label="Grafico progressi esercizio"></canvas></div></div>';
+
+      // Session detail panel (shown when user taps a chart point)
+      if (v.detailLog && v.detailWeek != null) {
+        const ex = findExercise(v.progressExercise);
+        const sets = expandLogToSets(v.detailLog, ex);
+        if (sets && sets.length > 0) {
+          html += '<div class="session-detail">';
+          html += '<div class="session-detail-header">';
+          html += '<div class="session-detail-week">Settimana ' + v.detailWeek + '</div>';
+          html += '<button class="session-detail-close" data-action="close-detail">Chiudi ✕</button>';
+          html += '</div>';
+          sets.forEach((s, i) => {
+            html += '<div class="session-set-row">';
+            html += '<span class="session-set-num">Serie ' + (i + 1) + '</span>';
+            html += '<span class="session-set-vals"><strong>' + s.weight + ' kg</strong> × ' + s.reps + ' reps</span>';
+            html += '</div>';
+          });
+          // Total volume
+          const totalVol = sets.reduce((sum, s) => sum + s.weight * s.reps, 0);
+          html += '<div class="session-set-row" style="border-top:1px solid var(--line);margin-top:6px;padding-top:10px">';
+          html += '<span class="session-set-num">Volume tot.</span>';
+          html += '<span class="session-set-vals"><strong>' + Math.round(totalVol) + ' kg</strong></span>';
+          html += '</div>';
+          html += '</div>';
+        }
+      }
     }
 
     html += '<div class="section-title">Per gruppo muscolare</div>';
@@ -1832,12 +2146,67 @@
     if (m.type === 'log-ex') {
       const ex = findExercise(m.exId);
       const session = getSession(m.workoutId);
-      const log = session.log[m.exId] || {};
-      const cur = log.weight != null ? log.weight : ex.weight;
-      html += '<div class="modal-eyebrow">Registra peso</div>';
+      const log = session.log[m.exId] || null;
+      const isDetailedExisting = log && log.sets && Array.isArray(log.sets) && log.sets.length > 0;
+      // Determine current mode: from view state, or from existing log, or default simple
+      if (m.logMode == null) {
+        m.logMode = isDetailedExisting ? 'detail' : 'simple';
+      }
+      // Initialize working sets array if not yet set
+      if (m.workingSets == null) {
+        if (isDetailedExisting) {
+          m.workingSets = log.sets.map(s => ({ weight: s.weight, reps: s.reps }));
+        } else {
+          const w = log && log.weight != null ? log.weight : ex.weight;
+          const r = log && log.reps != null ? log.reps : (parseInt(String(ex.reps).split('-')[0]) || 8);
+          m.workingSets = [];
+          for (let i = 0; i < ex.sets; i++) m.workingSets.push({ weight: w, reps: r });
+        }
+      }
+      // Initialize simple values if not yet set
+      if (m.simpleW == null) {
+        m.simpleW = (log && log.weight != null) ? log.weight : ex.weight;
+      }
+      if (m.simpleR == null) {
+        m.simpleR = (log && log.reps != null) ? log.reps : (parseInt(String(ex.reps).split('-')[0]) || 8);
+      }
+      const simpleW = m.simpleW;
+      const simpleR = m.simpleR;
+
+      html += '<div class="modal-eyebrow">Registra serie</div>';
       html += '<div class="modal-title">' + escapeHtml(ex.name) + '</div>';
-      html += '<div class="modal-sub">Modifica il peso usato per questa sessione. Il valore di default della scheda non viene cambiato.</div>';
-      html += '<div class="field"><label>Peso (kg)</label><input type="number" id="m-weight" step="0.5" value="' + cur + '" autofocus></div>';
+      html += '<div class="modal-sub">Modalità semplice: stesso peso e reps per tutte le serie. Modalità dettagliata: imposta peso e reps per ogni serie singolarmente.</div>';
+
+      html += '<div class="log-mode-toggle">';
+      html += '<button class="' + (m.logMode === 'simple' ? 'active' : '') + '" data-action="log-mode" data-mode="simple">Semplice</button>';
+      html += '<button class="' + (m.logMode === 'detail' ? 'active' : '') + '" data-action="log-mode" data-mode="detail">Dettagliato</button>';
+      html += '</div>';
+
+      if (m.logMode === 'simple') {
+        html += '<div class="field-row" style="grid-template-columns:1fr 1fr">';
+        html += '<div class="field"><label>Peso (kg)</label><input type="number" id="m-weight" step="0.5" value="' + simpleW + '" autofocus></div>';
+        html += '<div class="field"><label>Ripetizioni</label><input type="number" id="m-reps-num" value="' + simpleR + '"></div>';
+        html += '</div>';
+        html += '<div style="font-family:var(--mono);font-size:10px;color:var(--text-3);letter-spacing:0.15em;text-transform:uppercase;margin-top:-4px">Per tutte le ' + ex.sets + ' serie</div>';
+      } else {
+        // Detailed mode: list of sets
+        // Find the heaviest set to mark as "peak"
+        let maxW = 0;
+        m.workingSets.forEach(s => { if (s.weight > maxW) maxW = s.weight; });
+        html += '<div class="sets-list">';
+        m.workingSets.forEach((s, idx) => {
+          const isPeak = m.workingSets.length > 1 && s.weight === maxW && maxW > 0 && m.workingSets.filter(x => x.weight === maxW).length < m.workingSets.length;
+          html += '<div class="set-row' + (isPeak ? ' peak' : '') + '">';
+          html += '<div class="set-num">' + (idx + 1) + '</div>';
+          html += '<div class="set-input-wrap"><input type="number" step="0.5" data-set-idx="' + idx + '" data-set-field="weight" value="' + s.weight + '"><span class="set-unit">KG</span></div>';
+          html += '<div class="set-input-wrap"><input type="number" data-set-idx="' + idx + '" data-set-field="reps" value="' + s.reps + '"><span class="set-unit">REPS</span></div>';
+          html += '<button class="set-del" data-action="del-set" data-idx="' + idx + '" aria-label="Elimina serie"' + (m.workingSets.length <= 1 ? ' disabled style="opacity:0.3;cursor:not-allowed"' : '') + '><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/></svg></button>';
+          html += '</div>';
+        });
+        html += '</div>';
+        html += '<button class="set-add-btn" data-action="add-set">+ Aggiungi serie</button>';
+      }
+
       html += '<div class="modal-actions"><button class="btn" data-action="modal-close">Annulla</button><button class="btn btn-primary" data-action="save-log">Salva</button></div>';
     } else if (m.type === 'edit-ex' || m.type === 'add-ex') {
       const isNew = m.type === 'add-ex';
@@ -1906,6 +2275,8 @@
       el.addEventListener('click', e => {
         e.stopPropagation();
         state.view.progressMode = el.dataset.pmode;
+        delete state.view.detailLog;
+        delete state.view.detailWeek;
         render();
       });
     });
@@ -1914,6 +2285,8 @@
     if (exSel) {
       exSel.addEventListener('change', () => {
         state.view.progressExercise = exSel.value;
+        delete state.view.detailLog;
+        delete state.view.detailWeek;
         render();
       });
     }
@@ -1921,6 +2294,32 @@
     document.querySelectorAll('[data-stop]').forEach(el => {
       el.addEventListener('click', e => e.stopPropagation());
     });
+  }
+
+  function captureLogModalState() {
+    const m = state.view.modal;
+    if (!m || m.type !== 'log-ex') return;
+    if (m.logMode === 'simple') {
+      const wEl = document.getElementById('m-weight');
+      const rEl = document.getElementById('m-reps-num');
+      if (wEl) {
+        const w = parseFloat(wEl.value);
+        if (!isNaN(w)) m.simpleW = w;
+      }
+      if (rEl) {
+        const r = parseInt(rEl.value);
+        if (!isNaN(r)) m.simpleR = r;
+      }
+    } else if (m.logMode === 'detail') {
+      // Read all set inputs back into workingSets
+      document.querySelectorAll('[data-set-idx]').forEach(input => {
+        const idx = parseInt(input.dataset.setIdx);
+        const field = input.dataset.setField;
+        if (!m.workingSets[idx]) return;
+        const v = field === 'weight' ? parseFloat(input.value) : parseInt(input.value);
+        if (!isNaN(v)) m.workingSets[idx][field] = v;
+      });
+    }
   }
 
   function handleAction(action, data, el) {
@@ -1951,13 +2350,66 @@
     } else if (action === 'log-ex') {
       state.view.modal = { type: 'log-ex', exId: data.ex, workoutId: state.view.workoutId };
       render();
+    } else if (action === 'close-detail') {
+      delete state.view.detailLog;
+      delete state.view.detailWeek;
+      render();
+    } else if (action === 'log-mode') {
+      // Switch between simple and detail mode within log modal
+      const m = state.view.modal;
+      if (!m) return;
+      // Capture current values from the displayed mode before switching
+      captureLogModalState();
+      const newMode = data.mode;
+      if (newMode === 'detail' && m.logMode === 'simple') {
+        // Going simple → detail: propagate simple values to all sets
+        const ex = findExercise(m.exId);
+        const w = m.simpleW != null ? m.simpleW : ex.weight;
+        const r = m.simpleR != null ? m.simpleR : (parseInt(String(ex.reps).split('-')[0]) || 8);
+        m.workingSets = [];
+        for (let i = 0; i < ex.sets; i++) {
+          m.workingSets.push({ weight: w, reps: r });
+        }
+      } else if (newMode === 'simple' && m.logMode === 'detail') {
+        // Going detail → simple: take the most common (or first) set's values
+        if (m.workingSets && m.workingSets.length > 0) {
+          m.simpleW = m.workingSets[0].weight;
+          m.simpleR = m.workingSets[0].reps;
+        }
+      }
+      m.logMode = newMode;
+      render();
+    } else if (action === 'add-set') {
+      const m = state.view.modal;
+      if (!m) return;
+      captureLogModalState();
+      const last = m.workingSets[m.workingSets.length - 1];
+      m.workingSets.push({ weight: last ? last.weight : 0, reps: last ? last.reps : 8 });
+      render();
+    } else if (action === 'del-set') {
+      const m = state.view.modal;
+      if (!m || m.workingSets.length <= 1) return;
+      captureLogModalState();
+      m.workingSets.splice(parseInt(data.idx), 1);
+      render();
     } else if (action === 'save-log') {
       const m = state.view.modal;
       const session = getSession(m.workoutId);
-      const w = parseFloat(document.getElementById('m-weight').value);
-      if (!isNaN(w)) {
-        if (!session.log[m.exId]) session.log[m.exId] = {};
-        session.log[m.exId].weight = w;
+      captureLogModalState();
+      if (m.logMode === 'simple') {
+        const w = m.simpleW;
+        const r = m.simpleR;
+        if (!isNaN(w)) {
+          session.log[m.exId] = { weight: w, reps: r };
+        }
+      } else {
+        // Detail mode: save sets array
+        const cleanSets = m.workingSets
+          .filter(s => !isNaN(s.weight) && !isNaN(s.reps))
+          .map(s => ({ weight: s.weight, reps: s.reps }));
+        if (cleanSets.length > 0) {
+          session.log[m.exId] = { sets: cleanSets };
+        }
       }
       delete state.view.modal;
       saveState(); render();
@@ -2116,7 +2568,7 @@
               fill: true,
               tension: 0.35,
               pointRadius: 5,
-              pointHoverRadius: 7,
+              pointHoverRadius: 9,
               pointBackgroundColor: '#f4cf5f',
               pointBorderColor: '#0a0a0a',
               pointBorderWidth: 2,
@@ -2126,6 +2578,15 @@
           options: {
             responsive: true,
             maintainAspectRatio: false,
+            onClick: (evt, elements) => {
+              if (elements.length === 0) return;
+              const idx = elements[0].index;
+              const point = data[idx];
+              if (!point) return;
+              state.view.detailWeek = point.week;
+              state.view.detailLog = point.log;
+              render();
+            },
             plugins: {
               legend: { display: false },
               tooltip: {
@@ -2136,7 +2597,19 @@
                 borderWidth: 1,
                 padding: 10,
                 titleFont: { family: "'JetBrains Mono', monospace", size: 10 },
-                bodyFont: { family: "'JetBrains Mono', monospace", size: 12 }
+                bodyFont: { family: "'JetBrains Mono', monospace", size: 12 },
+                callbacks: {
+                  label: (ctx) => {
+                    const point = data[ctx.dataIndex];
+                    if (!point) return '';
+                    const ex = findExercise(state.view.progressExercise);
+                    const summary = formatLogSummary(point.log, ex);
+                    return v.progressMode === 'volume'
+                      ? 'Volume: ' + ctx.parsed.y
+                      : summary;
+                  },
+                  afterLabel: () => 'Tocca per dettagli'
+                }
               }
             },
             scales: {
